@@ -17,44 +17,19 @@ This should give you a basic api at 8888 (If you have not changed the port). Hit
 
 ### SQL migration:
 
-# Step 1:
+#### Step 1: Create Migration.
 
-Install Sequelize and MySQL2.
-Code
 
 ``` shell
-    npm install --save sequelize mysql2
-    npm install --save-dev sequelize-cli
-```
-
-# Step 2:
-Initialize Sequelize.
-
-Code
-
-``` shell
-    npx sequelize-cli init
-```
-
-This command sets up the necessary folders and files, including config, migrations, models, and seeders. Configure Database Connection.
-Edit config/config.json with your MySQL database credentials.
-
-# Step 3:
-create a migration.
-
-Code
-
-``` shell
-    npx sequelize-cli migration:generate --name create-users
+    cd app/database
+    npx sequelize-cli migration:generate --name <operation-tablename>
 ```
 
 This command creates a new migration file in the migrations directory. Define Schema Changes. 
-Edit the generated migration file (e.g., migrations/<timestamp>-create-users.js) to define the schema changes.
+Edit the generated migration file (e.g., migrations/timestamp-operation-tablename.js) to define the schema changes.
 
-# Step 4:
-Run Migrations.
+#### Step 2: Run Migrations.
 
-Code
 
 ``` shell
     npx sequelize-cli db:migrate
@@ -62,14 +37,12 @@ Code
 
 This command executes all pending migrations, updating the database schema. 
 
+---
 
--------------------------------------------------------------------------------------------------------------------------------------
+### Extras:
 
-# Extras:
+#### Undo Migrations.
 
-Undo Migrations.
-
-Code
 
 ``` shell
     npx sequelize-cli db:migrate:undo
@@ -77,9 +50,8 @@ Code
 
 This command reverts the last executed migration. 
 
-Undo All Migrations.
+#### Undo All Migrations.
 
-Code
 
 ``` shell
     npx sequelize-cli db:migrate:undo:all
@@ -93,6 +65,8 @@ This command reverts all executed migrations.
 ```
 
 This command reverts all executed migrations to their original file back (Recommended to avoid any potential errors). 
+
+---
 
 ### Reference
 + http://restify.com/docs/home/
